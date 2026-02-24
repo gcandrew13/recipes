@@ -1,0 +1,20 @@
+{"id": "smoothie",
+"name": "fruit smoothie",
+"type": "drink",
+"ingredients": {"apple": {"amount": 1, "unit": "whole"},
+                "banana": {"amount": 1, "unit": "whole"},
+                "yogurt": {"amount": 1, "unit": "cup"},
+                "honey": {"amount": 1, "unit": "tbsp"}
+            },
+"steps": ["1. Peel and chop fruits",
+          "2. Add fruits to blender",
+          "3. Add yogurt and honey",
+          "4. Blend until smooth",
+          "5. Pour into glass and serve"
+        ],
+"time": ["3 minutes", "5 minutes"],
+"servings": 2,
+"materials": ["blender", "cutting board", "knife"],
+"image": "smoothie.jpg",
+"combos": []
+}

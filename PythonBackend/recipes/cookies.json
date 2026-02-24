@@ -1,0 +1,24 @@
+{"id": "cookies",
+"name": "chocolate chip cookies",
+"type": "dessert",
+"ingredients": {"flour": {"amount": 2.25, "unit": "cup"},
+                "sugar": {"amount": 0.75, "unit": "cup"},
+                "butter": {"amount": 1, "unit": "cup"},
+                "egg": {"amount": 2, "unit": "whole"},
+                "chocolate": {"amount": 2, "unit": "cup"}
+            },
+"steps": ["1. Preheat oven to 375°F",
+          "2. Cream butter and sugar",
+          "3. Add egg and mix",
+          "4. Gradually add flour",
+          "5. Stir in chocolate chips",
+          "6. Drop spoonfuls on baking sheet",
+          "7. Bake for 10-12 minutes",
+          "8. Cool on wire rack"
+        ],
+"time": ["15 minutes", "30 minutes"],
+"servings": 24,
+"materials": ["oven", "baking sheet", "mixing bowl"],
+"image": "cookies.jpg",
+"combos": []
+}

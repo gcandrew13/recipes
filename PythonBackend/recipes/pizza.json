@@ -1,0 +1,20 @@
+{"id": "pizza",
+"name": "margherita pizza",
+"type": "main",
+"ingredients": {"tomato": {"amount": 2, "unit": "cup"},
+                "cheese": {"amount": 1, "unit": "cup"},
+                "dough": {"amount": 1, "unit": "lb"},
+                "basil": {"amount": 0.25, "unit": "cup"}
+            },
+"steps": ["1. Preheat oven to 475°F",
+          "2. Roll out dough on floured surface",
+          "3. Spread tomato sauce on dough",
+          "4. Add cheese and basil",
+          "5. Bake for 12-15 minutes until golden"
+        ],
+"time": ["15 minutes", "30 minutes"],
+"servings": 4,
+"materials": ["oven", "baking sheet", "rolling pin"],
+"image": "pizza.jpg",
+"combos": []
+}

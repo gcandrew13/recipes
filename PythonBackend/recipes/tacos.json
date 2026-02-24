@@ -1,0 +1,22 @@
+{"id": "tacos",
+"name": "beef tacos",
+"type": "main",
+"ingredients": {"beef": {"amount": 0.5, "unit": "lb"},
+                "tortilla": {"amount": 4, "unit": "whole"},
+                "cheese": {"amount": 0.5, "unit": "cup"},
+                "lettuce": {"amount": 1, "unit": "cup"},
+                "tomato": {"amount": 1, "unit": "whole"}
+            },
+"steps": ["1. Cook beef until browned",
+          "2. Season with taco seasoning",
+          "3. Warm tortillas",
+          "4. Fill tortillas with beef",
+          "5. Add cheese, lettuce, and tomato",
+          "6. Fold and serve"
+        ],
+"time": ["15 minutes", "25 minutes"],
+"servings": 4,
+"materials": ["pan", "spatula"],
+"image": "tacos.jpg",
+"combos": []
+}

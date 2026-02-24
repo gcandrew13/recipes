@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Kitchen - Recipe Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍳 Recipe Kitchen</h1>
+            <p class="subtitle">Manage and browse your favorite recipes</p>
+            <button class="btn btn-primary" onclick="openAddRecipeModal()">+ Add New Recipe</button>
+        </header>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search recipes..." onkeyup="filterRecipes()">
+            <select id="typeFilter" onchange="filterRecipes()">
+                <option value="">All Types</option>
+                <option value="main">Main</option>
+                <option value="dessert">Dessert</option>
+                <option value="side">Side</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="drink">Drink</option>
+            </select>
+        </div>
+
+        <div id="recipesGrid" class="recipes-grid">
+            <!-- Recipes will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRecipeModal()">&times;</span>
+            <div id="recipeDetails"></div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Recipe Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content large">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2 id="modalTitle">Add New Recipe</h2>
+            <form id="recipeForm" onsubmit="saveRecipe(event)">
+                <div class="form-group">
+                    <label>Recipe Name *</label>
+                    <input type="text" id="recipeName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Type *</label>
+                        <select id="recipeType" required>
+                            <option value="main">Main</option>
+                            <option value="dessert">Dessert</option>
+                            <option value="side">Side</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="drink">Drink</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Servings *</label>
+                        <input type="number" id="recipeServings" min="1" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Prep Time *</label>
+                        <input type="text" id="prepTime" placeholder="e.g., 15 minutes" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Total Time *</label>
+                        <input type="text" id="totalTime" placeholder="e.g., 30 minutes" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Ingredients *</label>
+                    <div id="ingredientsList"></div>
+                    <button type="button" class="btn btn-secondary" onclick="addIngredientField()">+ Add Ingredient</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Steps *</label>
+                    <div id="stepsList"></div>
+                    <button type="button" class="btn btn-secondary" onclick="addStepField()">+ Add Step</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Materials/Tools</label>
+                    <div id="materialsList"></div>
+                    <button type="button" class="btn btn-secondary" onclick="addMaterialField()">+ Add Material</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Image Filename</label>
+                    <input type="text" id="recipeImage" placeholder="e.g., pizza.jpg">
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Recipe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

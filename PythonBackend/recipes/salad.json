@@ -1,0 +1,21 @@
+{"id": "salad",
+"name": "fresh garden salad",
+"type": "side",
+"ingredients": {"lettuce": {"amount": 1, "unit": "head"},
+                "tomato": {"amount": 2, "unit": "whole"},
+                "cucumber": {"amount": 1, "unit": "whole"},
+                "carrot": {"amount": 2, "unit": "whole"}
+            },
+"steps": ["1. Wash all vegetables",
+          "2. Chop lettuce into bite-sized pieces",
+          "3. Slice tomato and cucumber",
+          "4. Grate carrot",
+          "5. Mix all ingredients in a bowl",
+          "6. Add dressing if desired"
+        ],
+"time": ["10 minutes", "15 minutes"],
+"servings": 4,
+"materials": ["cutting board", "knife", "bowl"],
+"image": "salad.jpg",
+"combos": []
+}

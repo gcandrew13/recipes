@@ -1,0 +1,21 @@
+{"id": "omelette",
+"name": "cheese omelette",
+"type": "breakfast",
+"ingredients": {"egg": {"amount": 3, "unit": "whole"},
+                "cheese": {"amount": 0.5, "unit": "cup"},
+                "butter": {"amount": 1, "unit": "tbsp"}
+            },
+"steps": ["1. Crack eggs into bowl",
+          "2. Whisk eggs until frothy",
+          "3. Heat butter in pan",
+          "4. Pour eggs into pan",
+          "5. Add cheese when eggs start to set",
+          "6. Fold omelette in half",
+          "7. Cook for 1 more minute"
+        ],
+"time": ["5 minutes", "10 minutes"],
+"servings": 1,
+"materials": ["pan", "bowl", "whisk"],
+"image": "omelette.jpg",
+"combos": []
+}

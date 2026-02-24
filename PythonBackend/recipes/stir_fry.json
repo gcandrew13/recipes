@@ -1,0 +1,22 @@
+{"id": "stir_fry",
+"name": "vegetable stir fry",
+"type": "main",
+"ingredients": {"carrot": {"amount": 2, "unit": "whole"},
+                "broccoli": {"amount": 1, "unit": "head"},
+                "onion": {"amount": 1, "unit": "whole"},
+                "soy_sauce": {"amount": 2, "unit": "tbsp"}
+            },
+"steps": ["1. Cut vegetables into bite-sized pieces",
+          "2. Heat oil in wok or large pan",
+          "3. Add onions and stir-fry for 1 minute",
+          "4. Add carrots and broccoli",
+          "5. Stir-fry for 5 minutes",
+          "6. Add soy sauce",
+          "7. Cook for 2 more minutes"
+        ],
+"time": ["10 minutes", "15 minutes"],
+"servings": 3,
+"materials": ["wok", "cutting board", "knife"],
+"image": "stir_fry.jpg",
+"combos": []
+}

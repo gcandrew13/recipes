@@ -1,0 +1,21 @@
+{"id": "sandwich",
+"name": "classic sandwich",
+"type": "main",
+"ingredients": {"bread": {"amount": 2, "unit": "slice"},
+                "cheese": {"amount": 2, "unit": "slice"},
+                "lettuce": {"amount": 2, "unit": "leaf"},
+                "tomato": {"amount": 2, "unit": "slice"}
+            },
+"steps": ["1. Slice bread",
+          "2. Add cheese slice",
+          "3. Add lettuce",
+          "4. Add tomato slices",
+          "5. Top with second bread slice",
+          "6. Cut in half and serve"
+        ],
+"time": ["5 minutes", "10 minutes"],
+"servings": 1,
+"materials": ["knife", "cutting board"],
+"image": "sandwich.jpg",
+"combos": []
+}

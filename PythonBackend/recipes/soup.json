@@ -1,0 +1,22 @@
+{"id": "soup",
+"name": "vegetable soup",
+"type": "main",
+"ingredients": {"carrot": {"amount": 3, "unit": "whole"},
+                "tomato": {"amount": 2, "unit": "whole"},
+                "onion": {"amount": 1, "unit": "whole"},
+                "broth": {"amount": 4, "unit": "cup"}
+            },
+"steps": ["1. Chop all vegetables",
+          "2. Heat oil in large pot",
+          "3. Sauté onions until translucent",
+          "4. Add carrots and tomatoes",
+          "5. Pour in broth",
+          "6. Simmer for 20 minutes",
+          "7. Season to taste"
+        ],
+"time": ["15 minutes", "35 minutes"],
+"servings": 6,
+"materials": ["pot", "cutting board", "knife"],
+"image": "soup.jpg",
+"combos": []
+}

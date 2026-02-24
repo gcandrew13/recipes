@@ -1,0 +1,24 @@
+{"id": "cake",
+"name": "chocolate cake",
+"type": "dessert",
+"ingredients": {"flour": {"amount": 2, "unit": "cup"},
+                "sugar": {"amount": 1.5, "unit": "cup"},
+                "egg": {"amount": 3, "unit": "whole"},
+                "chocolate": {"amount": 0.5, "unit": "cup"},
+                "butter": {"amount": 0.5, "unit": "cup"}
+            },
+"steps": ["1. Preheat oven to 350°F",
+          "2. Mix dry ingredients",
+          "3. Cream butter and sugar",
+          "4. Add eggs one at a time",
+          "5. Melt chocolate and add",
+          "6. Combine wet and dry ingredients",
+          "7. Pour into pan and bake 30 minutes",
+          "8. Cool before frosting"
+        ],
+"time": ["30 minutes", "60 minutes"],
+"servings": 8,
+"materials": ["oven", "mixing bowl", "whisk", "cake pan"],
+"image": "cake.jpg",
+"combos": []
+}

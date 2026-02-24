@@ -1,0 +1,22 @@
+{"id": "pasta",
+"name": "spaghetti with tomato sauce",
+"type": "main",
+"ingredients": {"pasta": {"amount": 1, "unit": "lb"},
+                "tomato": {"amount": 4, "unit": "whole"},
+                "garlic": {"amount": 3, "unit": "clove"},
+                "olive_oil": {"amount": 2, "unit": "tbsp"}
+            },
+"steps": ["1. Boil water in large pot",
+          "2. Add pasta and cook according to package",
+          "3. Heat olive oil in pan",
+          "4. Add garlic and cook until fragrant",
+          "5. Add tomatoes and simmer",
+          "6. Drain pasta and mix with sauce",
+          "7. Serve hot"
+        ],
+"time": ["15 minutes", "25 minutes"],
+"servings": 4,
+"materials": ["pot", "pan", "strainer"],
+"image": "pasta.jpg",
+"combos": []
+}
