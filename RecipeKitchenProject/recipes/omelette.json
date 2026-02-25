@@ -1,0 +1,23 @@
+{
+    "id": "omelette",
+    "name": "Classic Omelette",
+    "description": "Fluffy omelette with cheese and vegetables",
+    "ingredients": {
+        "egg": {"amount": 3, "unit": "pieces"},
+        "cheese": {"amount": 50, "unit": "grams"},
+        "butter": {"amount": 1, "unit": "tablespoon"},
+        "salt": {"amount": 1, "unit": "pinch"}
+    },
+    "steps": [
+        "Crack eggs into a bowl and whisk well",
+        "Add a pinch of salt",
+        "Heat butter in a non-stick pan over medium heat",
+        "Pour in the egg mixture",
+        "As eggs set, gently lift edges to let uncooked egg flow underneath",
+        "Add grated cheese to one half",
+        "Fold omelette in half and serve"
+    ],
+    "time": ["5 min", "5 min"],
+    "servings": 1,
+    "materials": ["non-stick pan", "whisk", "spatula"]
+}

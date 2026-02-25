@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Kitchen</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+
+        <!-- Header Bar -->
+        <header class="app-header">
+            <div class="header-left">
+                <h1 class="app-title">Recipe Kitchen</h1>
+            </div>
+            <div class="header-center">
+                <div class="basket-status" id="basketStatus">
+                    <span class="basket-count">0</span> ingredients selected
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="btn-clear" id="clearAll">Clear All</button>
+            </div>
+        </header>
+
+        <!-- Main Kitchen Area -->
+        <main class="kitchen-scene">
+
+            <!-- Kitchen Background -->
+            <div class="kitchen-bg">
+                <!-- Back Wall -->
+                <div class="wall">
+                    <div class="wall-tile"></div>
+                    <div class="window">
+                        <div class="window-frame">
+                            <div class="window-pane"></div>
+                            <div class="window-pane"></div>
+                        </div>
+                        <div class="window-sill"></div>
+                    </div>
+                    <div class="upper-cabinets">
+                        <div class="cabinet cabinet-upper">
+                            <div class="cabinet-door"></div>
+                        </div>
+                        <div class="cabinet cabinet-upper">
+                            <div class="cabinet-door"></div>
+                        </div>
+                        <div class="range-hood"></div>
+                        <div class="cabinet cabinet-upper">
+                            <div class="cabinet-door"></div>
+                        </div>
+                        <div class="cabinet cabinet-upper">
+                            <div class="cabinet-door"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Refrigerator -->
+                <div class="refrigerator" id="refrigerator">
+                    <div class="fridge-body">
+                        <div class="fridge-freezer">
+                            <div class="fridge-handle"></div>
+                        </div>
+                        <div class="fridge-main">
+                            <div class="fridge-handle"></div>
+                            <div class="fridge-interior" id="fridgeInterior">
+                                <div class="fridge-shelf" data-shelf="0"></div>
+                                <div class="fridge-shelf" data-shelf="1"></div>
+                                <div class="fridge-shelf" data-shelf="2"></div>
+                                <div class="fridge-drawer">
+                                    <span class="drawer-label">Crisper</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fridge-controls">
+                        <button class="fridge-nav" id="fridgePrev" aria-label="Previous">‹</button>
+                        <span class="fridge-page"><span id="currentPage">1</span>/<span id="totalPages">1</span></span>
+                        <button class="fridge-nav" id="fridgeNext" aria-label="Next">›</button>
+                    </div>
+                </div>
+
+                <!-- Counter Area -->
+                <div class="counter-area">
+                    <div class="counter-top" id="counterTop">
+                        <!-- Ingredients will be placed here -->
+                    </div>
+                    <div class="counter-front">
+                        <div class="lower-cabinet">
+                            <div class="cabinet-door"></div>
+                            <div class="cabinet-door"></div>
+                        </div>
+                        <div class="stove">
+                            <div class="stove-top">
+                                <div class="burner"></div>
+                                <div class="burner"></div>
+                                <div class="burner"></div>
+                                <div class="burner"></div>
+                            </div>
+                            <div class="oven-door">
+                                <div class="oven-window"></div>
+                                <div class="oven-handle"></div>
+                            </div>
+                        </div>
+                        <div class="lower-cabinet">
+                            <div class="cabinet-door"></div>
+                            <div class="cabinet-door"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recipe Basket on Counter -->
+                <div class="recipe-basket" id="recipeBasket">
+                    <div class="basket-bowl">
+                        <div class="basket-inner" id="basketInner"></div>
+                    </div>
+                    <div class="basket-label">Drop here for recipes</div>
+                </div>
+
+                <!-- Floor -->
+                <div class="floor">
+                    <div class="floor-pattern"></div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Recipe Sidebar -->
+        <aside class="recipe-sidebar" id="recipeSidebar">
+            <div class="sidebar-header">
+                <h2>Recipes</h2>
+                <div class="selected-items" id="selectedItems"></div>
+            </div>
+            <div class="sidebar-content">
+                <div class="recipe-list" id="recipeList">
+                    <div class="recipe-placeholder">
+                        <p>Select ingredients to find matching recipes</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Recipe Modal -->
+        <div class="modal-overlay" id="recipeModal">
+            <div class="modal-container">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <div class="modal-body" id="modalBody"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

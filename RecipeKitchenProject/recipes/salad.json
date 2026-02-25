@@ -1,0 +1,22 @@
+{
+    "id": "salad",
+    "name": "Garden Salad",
+    "description": "Fresh and healthy vegetable salad",
+    "ingredients": {
+        "lettuce": {"amount": 1, "unit": "head"},
+        "tomato": {"amount": 2, "unit": "pieces"},
+        "cucumber": {"amount": 1, "unit": "piece"},
+        "carrot": {"amount": 1, "unit": "piece"}
+    },
+    "steps": [
+        "Wash all vegetables thoroughly",
+        "Tear lettuce into bite-sized pieces",
+        "Slice tomatoes into wedges",
+        "Slice cucumber into rounds",
+        "Shred or slice carrot",
+        "Combine in a large bowl"
+    ],
+    "time": ["10 min", "0 min"],
+    "servings": 2,
+    "materials": ["cutting board", "knife", "salad bowl"]
+}

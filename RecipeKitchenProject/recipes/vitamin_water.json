@@ -1,0 +1,20 @@
+{
+    "id": "vitamin_water",
+    "name": "vitamin water",
+    "description": "Healthy energyzing thirst quencher",
+    "ingredients": {
+        "coconut water": {"amount": 2, "unit": "cups"},
+        "carrot juice": {"amount": 500, "unit": "millileters"},
+        "apple juice": {"amount": 250, "unit": "millileters"},
+        "lemon juice": {"amount": 100, "unit": "millileters"},
+        "natural minerals": {"amount": 1, "unit": "scoop"}
+    },
+    "steps": [
+        "Gather ingredients together",
+        "Mix well with a spoon",
+        "Serve over ice"
+    ],
+    "time": ["2 min", "2 min"],
+    "servings": 1,
+    "materials": ["cup", "spoon", "meauring cups"]
+}

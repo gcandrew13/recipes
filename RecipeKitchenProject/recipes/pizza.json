@@ -1,0 +1,22 @@
+{
+    "id": "pizza",
+    "name": "Margherita Pizza",
+    "description": "Classic Italian pizza with fresh ingredients",
+    "ingredients": {
+        "dough": {"amount": 1, "unit": "ball"},
+        "tomato": {"amount": 3, "unit": "pieces"},
+        "cheese": {"amount": 200, "unit": "grams"},
+        "basil": {"amount": 10, "unit": "leaves"}
+    },
+    "steps": [
+        "Preheat oven to 450F (230C)",
+        "Roll out the dough into a circle",
+        "Spread crushed tomatoes on the dough",
+        "Add sliced cheese evenly",
+        "Bake for 12-15 minutes until golden",
+        "Add fresh basil leaves before serving"
+    ],
+    "time": ["15 min", "20 min"],
+    "servings": 4,
+    "materials": ["oven", "rolling pin", "baking sheet"]
+}
