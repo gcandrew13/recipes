@@ -169,6 +169,7 @@ def health_check():
 if __name__ == '__main__':
     print("Starting Recipe Kitchen API...")
     print("Server running on http://localhost:5000")
+    print("blah blah blah")
     app.run(debug=True, port=5000)
 ```
 
@@ -227,7 +228,7 @@ Server running on http://localhost:5000
 
 Open your web browser and go to:
 ```
-http://localhost:5000/api/health
+    http://localhost:5000/api/health
 ```
 
 You should see:
