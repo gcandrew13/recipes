@@ -8,9 +8,105 @@
 // ============================================
 
 const CONFIG = {
-    API_BASE: 'http://localhost:5001/api',
+    // Use API when running locally, null when hosted (use embedded data)
+    API_BASE: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? 'http://localhost:5001/api'
+        : null,
     ITEMS_PER_PAGE: 9, // 3 shelves x 3 items
 };
+
+// ============================================
+// EMBEDDED RECIPE DATA (for GitHub Pages fallback)
+// ============================================
+
+const EMBEDDED_RECIPES = [
+    {
+        "id": "salad",
+        "name": "Garden Salad",
+        "description": "Fresh and healthy vegetable salad",
+        "ingredients": {
+            "lettuce": {"amount": 1, "unit": "head"},
+            "tomato": {"amount": 2, "unit": "pieces"},
+            "cucumber": {"amount": 1, "unit": "piece"},
+            "carrot": {"amount": 1, "unit": "piece"}
+        },
+        "steps": [
+            "Wash all vegetables thoroughly",
+            "Tear lettuce into bite-sized pieces",
+            "Slice tomatoes into wedges",
+            "Slice cucumber into rounds",
+            "Shred or slice carrot",
+            "Combine in a large bowl"
+        ],
+        "time": ["10 min", "0 min"],
+        "servings": 2,
+        "materials": ["cutting board", "knife", "salad bowl"]
+    },
+    {
+        "id": "omelette",
+        "name": "Classic Omelette",
+        "description": "Fluffy omelette with cheese and vegetables",
+        "ingredients": {
+            "egg": {"amount": 3, "unit": "pieces"},
+            "cheese": {"amount": 50, "unit": "grams"},
+            "butter": {"amount": 1, "unit": "tablespoon"},
+            "salt": {"amount": 1, "unit": "pinch"}
+        },
+        "steps": [
+            "Crack eggs into a bowl and whisk well",
+            "Add a pinch of salt",
+            "Heat butter in a non-stick pan over medium heat",
+            "Pour in the egg mixture",
+            "As eggs set, gently lift edges to let uncooked egg flow underneath",
+            "Add grated cheese to one half",
+            "Fold omelette in half and serve"
+        ],
+        "time": ["5 min", "5 min"],
+        "servings": 1,
+        "materials": ["non-stick pan", "whisk", "spatula"]
+    },
+    {
+        "id": "pizza",
+        "name": "Margherita Pizza",
+        "description": "Classic Italian pizza with fresh ingredients",
+        "ingredients": {
+            "dough": {"amount": 1, "unit": "ball"},
+            "tomato": {"amount": 3, "unit": "pieces"},
+            "cheese": {"amount": 200, "unit": "grams"},
+            "basil": {"amount": 10, "unit": "leaves"}
+        },
+        "steps": [
+            "Preheat oven to 450F (230C)",
+            "Roll out the dough into a circle",
+            "Spread crushed tomatoes on the dough",
+            "Add sliced cheese evenly",
+            "Bake for 12-15 minutes until golden",
+            "Add fresh basil leaves before serving"
+        ],
+        "time": ["15 min", "20 min"],
+        "servings": 4,
+        "materials": ["oven", "rolling pin", "baking sheet"]
+    },
+    {
+        "id": "vitamin_water",
+        "name": "Vitamin Water",
+        "description": "Healthy energizing thirst quencher",
+        "ingredients": {
+            "lemon": {"amount": 1, "unit": "piece"},
+            "orange": {"amount": 1, "unit": "piece"},
+            "honey": {"amount": 2, "unit": "tablespoons"}
+        },
+        "steps": [
+            "Squeeze lemon and orange juice",
+            "Mix with cold water",
+            "Add honey and stir well",
+            "Serve over ice"
+        ],
+        "time": ["5 min", "0 min"],
+        "servings": 2,
+        "materials": ["pitcher", "juicer", "spoon"]
+    }
+];
 
 // All available ingredients with emoji icons
 const INGREDIENTS = [
@@ -142,34 +238,49 @@ function capitalize(str) {
 // ============================================
 
 async function fetchRecipes() {
+    // If no API configured (hosted environment), use embedded data
+    if (!CONFIG.API_BASE) {
+        console.log('📦 Using embedded recipe data (hosted mode)');
+        state.allRecipes = EMBEDDED_RECIPES;
+        return;
+    }
+
     try {
         const res = await fetch(`${CONFIG.API_BASE}/recipes`);
         if (res.ok) {
             state.allRecipes = await res.json();
+            console.log('✅ Loaded recipes from API');
+            return;
         }
     } catch (e) {
-        console.warn('Could not fetch recipes from API, using client-side matching');
+        console.warn('Could not fetch recipes from API, using embedded data');
     }
+
+    // Fallback to embedded data if API fails
+    state.allRecipes = EMBEDDED_RECIPES;
 }
 
 async function searchRecipes(items) {
     if (items.length === 0) return [];
 
-    try {
-        const res = await fetch(`${CONFIG.API_BASE}/recipes/search`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items }),
-        });
-        if (res.ok) {
-            const data = await res.json();
-            return data.recipes || [];
+    // Try API only if configured and available
+    if (CONFIG.API_BASE) {
+        try {
+            const res = await fetch(`${CONFIG.API_BASE}/recipes/search`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items }),
+            });
+            if (res.ok) {
+                const data = await res.json();
+                return data.recipes || [];
+            }
+        } catch (e) {
+            // Fallback to client-side search
         }
-    } catch (e) {
-        // Fallback to client-side
     }
 
-    // Client-side search fallback
+    // Client-side search (works with embedded data)
     return state.allRecipes.filter(recipe => {
         const ingredients = recipe.ingredients || {};
         const recipeItems = typeof ingredients === 'object' && !Array.isArray(ingredients)
@@ -190,12 +301,15 @@ function renderFridge() {
     // Clear shelves
     elements.fridgeShelves.forEach(shelf => shelf.innerHTML = '');
 
-    // Distribute items across 3 shelves
+    // Distribute items across 3 shelves with staggered animation
     pageItems.forEach((ing, idx) => {
         const shelfIdx = Math.floor(idx / 3);
         const shelf = elements.fridgeShelves[shelfIdx];
         if (shelf) {
             const el = createIngredientElement(ing);
+            // Add staggered entrance animation
+            el.style.animationDelay = `${idx * 50}ms`;
+            el.classList.add('animate-pop-in');
             shelf.appendChild(el);
         }
     });
@@ -411,6 +525,11 @@ function addToBasket(ingredient) {
     if (state.basketItems.has(ingredient.id)) return;
 
     state.basketItems.add(ingredient.id);
+
+    // Trigger basket bounce animation
+    elements.basketBowl.classList.add('animate-bounce');
+    setTimeout(() => elements.basketBowl.classList.remove('animate-bounce'), 400);
+
     updateBasketUI();
     updateRecipes();
     markIngredientInBasket(ingredient.id, true);
@@ -492,7 +611,7 @@ async function updateRecipes() {
 function renderRecipeList(recipes) {
     if (recipes.length === 0) {
         elements.recipeList.innerHTML = `
-            <div class="recipe-placeholder">
+            <div class="recipe-placeholder animate-fade-in">
                 <p>${state.basketItems.size === 0
                     ? 'Drag ingredients to the basket to find recipes'
                     : 'No recipes match these ingredients'}</p>
@@ -501,7 +620,7 @@ function renderRecipeList(recipes) {
         return;
     }
 
-    elements.recipeList.innerHTML = recipes.map(recipe => {
+    elements.recipeList.innerHTML = recipes.map((recipe, idx) => {
         const ingredients = recipe.ingredients || {};
         const count = typeof ingredients === 'object' && !Array.isArray(ingredients)
             ? Object.keys(ingredients).length
@@ -509,7 +628,7 @@ function renderRecipeList(recipes) {
         const time = Array.isArray(recipe.time) ? recipe.time[1] : (recipe.time || 'N/A');
 
         return `
-            <div class="recipe-card" data-id="${recipe.id}">
+            <div class="recipe-card animate-fade-in-up" style="animation-delay: ${idx * 80}ms" data-id="${recipe.id}">
                 <div class="recipe-card-header">
                     <span class="recipe-card-icon">${getRecipeIcon(recipe.id)}</span>
                     <div>
@@ -597,7 +716,13 @@ function openRecipeModal(recipe) {
 }
 
 function closeRecipeModal() {
-    elements.recipeModal.classList.remove('active');
+    // Add closing animation class
+    elements.recipeModal.classList.add('closing');
+
+    // Remove active class after animation completes
+    setTimeout(() => {
+        elements.recipeModal.classList.remove('active', 'closing');
+    }, 200);
 }
 
 // ============================================

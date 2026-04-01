@@ -957,6 +957,286 @@ body {
 }
 
 /* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+
+/* Entrance Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bounce Animations */
+@keyframes bounceIn {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.15);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceSmall {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+/* Pulse & Glow */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(212, 168, 83, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px 10px rgba(212, 168, 83, 0.2);
+    }
+}
+
+/* Drop Animation */
+@keyframes dropIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+    }
+    60% {
+        transform: translateY(5px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Shimmer loading state */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Modal slide */
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes modalSlideDown {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+}
+
+/* Animation Classes */
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.4s ease-out forwards;
+}
+
+.animate-pop-in {
+    opacity: 0;
+    animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-bounce {
+    animation: bounceIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-drop-in {
+    animation: dropIn 0.4s ease-out forwards;
+}
+
+/* ============================================
+   ENHANCED INTERACTIONS
+   ============================================ */
+
+/* Enhanced ingredient hover */
+.ingredient-item {
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+}
+
+.ingredient-item:hover {
+    transform: scale(1.15) rotate(3deg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.ingredient-item:active {
+    transform: scale(1.05);
+}
+
+/* Basket glow on drag-over */
+.basket-bowl.drag-over {
+    animation: pulseGlow 1s ease-in-out infinite;
+}
+
+/* Recipe card enhanced hover */
+.recipe-card {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.recipe-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.recipe-card:active {
+    transform: translateY(0);
+    transition-duration: 0.1s;
+}
+
+/* Modal animations */
+.modal-overlay.active .modal-container {
+    animation: modalSlideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.modal-overlay.closing .modal-container {
+    animation: modalSlideDown 0.2s ease-out forwards;
+}
+
+.modal-overlay.closing {
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+/* Modal backdrop blur */
+.modal-overlay.active {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Button micro-interactions */
+.btn-clear,
+.fridge-nav,
+.modal-close {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-clear:active,
+.fridge-nav:active,
+.modal-close:active {
+    transform: scale(0.95);
+}
+
+/* Selected tag animation */
+.selected-tag {
+    animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Basket inner items */
+.basket-inner .ingredient-item {
+    animation: dropIn 0.3s ease-out forwards;
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .animate-fade-in,
+    .animate-fade-in-up,
+    .animate-pop-in,
+    .animate-bounce,
+    .animate-drop-in {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+
+    .modal-overlay.active .modal-container,
+    .modal-overlay.closing .modal-container {
+        animation: none;
+    }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 
